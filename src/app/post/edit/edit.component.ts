@@ -34,8 +34,10 @@ export class EditComponent implements OnInit {
     });
 
     this.form = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      body: new FormControl('', Validators.required)
+      name: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
     });
   }
   get f(){
@@ -44,7 +46,7 @@ export class EditComponent implements OnInit {
   submit(){
     console.log(this.form.value);
     this.postService.update(this.id, this.form.value).subscribe(res => {
-         console.log('Post updated successfully!');
+         console.log('User updated successfully!');
          this.router.navigateByUrl('post/index');
     })
   }
